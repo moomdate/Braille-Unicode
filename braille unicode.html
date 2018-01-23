@@ -1,0 +1,121 @@
+<html>
+
+<head>
+    <title>
+        Braille Dot
+    </title>
+    <script src="jquery-3.3.1.js"></script>
+    <link rel="stylesheet" href="app.css">
+    <script>
+        $(document).ready(function () {
+            //  alert("Jquery is ready ");
+            $('.circle').click(function () {
+                var id = "#" + $(this).attr("id");
+                if ($(id).hasClass('circle'))
+                    $(id).removeClass("circle").addClass("selected");
+                else
+                    $(id).removeClass("selected").addClass("circle");
+
+               
+                unicodetoText(chengeOutput());
+            });
+        });
+        function unicodetoText(input){
+          //  console.log("input:", input);
+          var debug =  "";
+            $.getJSON("unicode.json", ok=>{
+                    var items = [];
+                   //data.replace('0x','');
+                   // console.log("data:",input);
+                    var newData = '28'+ (input.length<2?'0'+input:input);
+                   // console.log(newData);
+                    //console.log (ok[newData]); 
+                    $('#cha').text(ok[newData]);
+                   /* $.each(data, function (key, val) {
+                        items.push("<li id='" + key + "'>" + val + "</li>");
+                    });
+
+                    $("<ul/>", {
+                        "class": "my-new-list",
+                        html: items.join("")
+                    }).appendTo("body");*/
+                });
+               // return debug;
+        }
+        function chengeOutput() {
+            var a, b, c, d, e, f, g, h;
+            a = $('#d1').hasClass('selected') == true ? '1' : '0';
+            b = $('#d2').hasClass('selected') == true ? '2' : '0';
+            c = $('#d4').hasClass('selected') == true ? '4' : '0';
+            d = $('#d40').hasClass('selected') == true ? '40' : '0';
+
+            e = $('#d8').hasClass('selected') == true ? '8' : '0';
+            f = $('#d10').hasClass('selected') == true ? '10' : '0';
+            g = $('#d20').hasClass('selected') == true ? '20' : '0';
+            h = $('#d80').hasClass('selected') == true ? '80' : '0';
+            var outPut = plus(a, b, c, d, e, f, g, h);
+            output(outPut);
+         //   console.log("outPut is ",outPut)
+            return outPut;
+        }
+        function output(data) {
+            data = data.length < 2 ? '0' + data : data;
+            data = '0x' + data;
+            $('#hexOutput').val(data);
+        }
+        function plus(a, b, c, d, e, f, g, h) {
+            return toHex(toDex(a) + toDex(b) + toDex(c) + toDex(d) + toDex(e) + toDex(f) + toDex(g) + toDex(h));
+        }
+        function toDex(data) {
+            return parseInt("0x" + data, 16);
+        }
+        function toHex(data) {
+            var datax = parseInt(data);
+            return (datax.toString(16));
+        }
+    </script>
+
+</head>
+
+<body>
+
+    <h2 class="header">Braille Unicode</h2>
+    <table class="brailleCell padding">
+        <tr>
+            <td>
+                <div class="circle" name="dot" id="d1"></div>
+            </td>
+            <td>
+                <div class="circle" name="dot2" id="d8"></div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="circle" id="d2"></div>
+            </td>
+            <td>
+                <div class="circle" id="d10"></div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="circle" id="d4"></div>
+            </td>
+            <td>
+                <div class="circle" id="d20"></div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="circle" id="d40"></div>
+            </td>
+            <td>
+                <div class="circle" id="d80"></div>
+            </td>
+        </tr>
+    </table>
+    <div class="inputbox"> HEX:
+        <input type="text" id="hexOutput" value="0x00"> </div>
+        <div class="inputbox head_5">Character is <a id="cha">(space)</a></div>
+</body>
+</html
