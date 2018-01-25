@@ -25,8 +25,22 @@
           var debug =  "";
             $.getJSON("unicode.json", ok=>{
                     var newData = '28'+ (input.length<2?'0'+input:input);
+<<<<<<< HEAD
 
                     $('#cha').text(ok[newData]);
+=======
+                   // console.log(newData);
+                    //console.log (ok[newData]); 
+                    $('#cha').text(ok[newData]);
+                   /* $.each(data, function (key, val) {
+                         items.push("<li id='" + key + "'>" + val + "</li>");
+                    });
+ 
+                    $("<ul/>", {
+                        "class": "my-new-list",
+                        html: items.join("")
+                    }).appendTo("body");*/
+>>>>>>> de2454f05977b93488fe871559638ccee8f66186
                 });
                // return debug;
         }
