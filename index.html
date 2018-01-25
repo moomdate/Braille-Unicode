@@ -17,14 +17,14 @@
                     $(id).removeClass("selected").addClass("circle");
 
                
-                unicodetoText(chengeOutput());
+                unicodetoText(changeOutput());
             });
         });
         function unicodetoText(input){
           //  console.log("input:", input);
           var debug =  "";
             $.getJSON("unicode.json", ok=>{
-                    var items = [];
+
                    //data.replace('0x','');
                    // console.log("data:",input);
                     var newData = '28'+ (input.length<2?'0'+input:input);
@@ -42,7 +42,7 @@
                 });
                // return debug;
         }
-        function chengeOutput() {
+        function changeOutput() {
             var a, b, c, d, e, f, g, h;
             a = $('#d1').hasClass('selected') == true ? '1' : '0';
             b = $('#d2').hasClass('selected') == true ? '2' : '0';
