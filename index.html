@@ -20,6 +20,7 @@
         });
         function unicodetoText(input){
           //  console.log("input:", input);
+          
           var debug =  "";
             $.getJSON("unicode.json", ok=>{
                     var newData = '28'+ (input.length<2?'0'+input:input);
