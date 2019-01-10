@@ -1,2 +1,8 @@
+title: Braille Decoder
+description: Braille decoder has ui || ถอดรหัสเบร์ลล แปลอักษรเบร์ลล
 theme: jekyll-theme-merlot
-future: true 
+
+future: true #auto update feature
+
+plugins:
+  - jekyll-seo-tag #seo plugin
