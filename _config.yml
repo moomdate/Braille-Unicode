@@ -5,4 +5,6 @@ theme: jekyll-theme-merlot
 future: true #auto update feature
 
 plugins:
-  - jekyll-seo-tag #seo plugin
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
